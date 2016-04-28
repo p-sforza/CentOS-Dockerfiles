@@ -12,11 +12,10 @@ RUN yum install git -y && \
     yum install epel-release -y && \
     yum install letsencrypt -y
 
-ENV CERT_URL="test.com"
-ENV CERT_METH="standalone"
+ENV CERT_URL_LIST="test.com;www.test.com"
+ENV CERT_METH="--standalone"
 
-RUN alias certgen="letsencrypt certonly --agree-tos --register-unsafely-without-email"
+COPY ./start.sh /opt/certbox/start.sh
+COPY ./gencerts.py /opt/certbox/gencerts.py
 
-COPY ./gencert.sh /opt/certbox/gencert.sh
-
-ENTRYPOINT /opt/certbox/gencert.sh
+ENTRYPOINT /opt/certbox/start.sh
