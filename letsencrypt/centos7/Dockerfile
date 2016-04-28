@@ -13,6 +13,7 @@ RUN yum install git -y && \
     yum install letsencrypt -y
 
 ENV CERT_URL_LIST="test.com;www.test.com"
+ENV CERT_ACTION="certonly"
 ENV CERT_METH="--standalone"
 
 COPY ./start.sh /opt/certbox/start.sh
