@@ -4,14 +4,22 @@ import os;
 import sys;
 from subprocess import call;
 
-cert_urls = os.environ['CERT_URL_LIST']
-cert_meth = os.environ['CERT_METH']
-cert_action = os.environ['CERT_ACTION']
+letsencrypt_urls = os.environ['LETSENCRYPT_URLS']
+letsencrypt_meth = os.environ['LETSENCRYPT_METHOD']
+letsencrypt_cmd = os.environ['LETSENCRYPT_COMMAND']
+letsencrypt_dryrun = os.environ['LETSENCRYPT_DRYRUN']
+letsencrypt_noemail = os.environ['LETSENCRYPT_NOEMAIL']
 
 
-urls = cert_urls.split(";");
+urls = letsencrypt_urls.split(";");
 
-CMD = ["letsencrypt", cert_action, cert_meth, "--agree-tos", "--register-unsafely-without-email", "--dry-run"]
+CMD = ["letsencrypt", letsencrypt_cmd, letsencrypt_meth, "--agree-tos"]
+
+if letsencrypt_dryrun == "true":
+    CMD.append("--dry-run")
+
+if letsencrypt_noemail == "true":
+    CMD.append("--register-unsafely-without-email")
 
 for url in urls:
     CMD.append("-d")

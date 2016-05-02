@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 #logfile="/opt/certbox/certs/log";
-alias certgen="letsencrypt certonly --agree-tos --register-unsafely-without-email"
 
 
 #case ${CERT_METH} in
