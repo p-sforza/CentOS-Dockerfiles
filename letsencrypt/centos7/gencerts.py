@@ -13,7 +13,13 @@ letsencrypt_noemail = os.environ['LETSENCRYPT_NOEMAIL']
 
 urls = letsencrypt_urls.split(";");
 
-CMD = ["letsencrypt", letsencrypt_cmd, letsencrypt_meth, "--agree-tos"]
+CMD = ["letsencrypt", letsencrypt_cmd, letsencrypt_meth]
+
+if letsencrypt_meth == "webroot":
+    print "Webroot method not supported at the moment."
+    sys.exit(0)
+
+CMD.append("--agree-tos")
 
 if letsencrypt_dryrun == "true":
     CMD.append("--dry-run")

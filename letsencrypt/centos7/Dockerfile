@@ -12,11 +12,7 @@ RUN yum install git -y && \
     yum install epel-release -y && \
     yum install letsencrypt -y
 
-ENV LETSENCRYPT_URLS="test.com;www.test.com"
-ENV LETSENCRYPT_COMMAND="certonly"
-ENV LETSENCRYPT_METHOD="--manual"
-ENV LETSENCRYPT_DRYRUN="true"
-ENV LETSENCRYPT_NOEMAIL="true"
+ENV LETSENCRYPT_URLS="test.com;www.test.com" LETSENCRYPT_COMMAND="certonly" LETSENCRYPT_METHOD="--manual" LETSENCRYPT_DRYRUN="true" LETSENCRYPT_NOEMAIL="true"
 
 COPY ./start.sh /opt/certbox/start.sh
 COPY ./gencerts.py /opt/certbox/gencerts.py
