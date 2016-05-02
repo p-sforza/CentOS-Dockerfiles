@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-import os;
-import sys;
-from subprocess import call;
+import os
+import sys
+from subprocess import call
 
 letsencrypt_urls = os.environ['LETSENCRYPT_URLS']
 letsencrypt_meth = os.environ['LETSENCRYPT_METHOD']
